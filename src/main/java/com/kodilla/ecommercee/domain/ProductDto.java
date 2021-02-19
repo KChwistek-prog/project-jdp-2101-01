@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @AllArgsConstructor
 public class ProductDto {
@@ -12,7 +15,8 @@ public class ProductDto {
     private String description;
     private double price;
     private String unit;
-    private Long groupId;
+    private Group groupId;
+    private List<Cart> carts;
 }
 
 

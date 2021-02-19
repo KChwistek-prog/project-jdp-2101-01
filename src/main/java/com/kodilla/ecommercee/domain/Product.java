@@ -5,7 +5,6 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -37,6 +36,7 @@ public class Product {
     @JoinColumn(name = "GRUPY_ID")
     private Group groups;
 
-    @ManyToMany
-    private Set<Product> products;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Cart> carts = new ArrayList<>();
+
 }
