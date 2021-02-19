@@ -15,6 +15,15 @@ import java.util.Set;
 @Table(name = "products")
 public class Product {
 
+    public Product(String name, String description, Double price, String unit, Group groups, Set<Cart> carts) {
+        this.name=name;
+        this.description=description;
+        this.price=price;
+        this.unit=unit;
+        this.groups=groups;
+        this.carts=carts;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NonNull
@@ -38,5 +47,5 @@ public class Product {
     private Group groups;
 
     @ManyToMany
-    private Set<Product> products;
+    private Set<Cart> carts;
 }
