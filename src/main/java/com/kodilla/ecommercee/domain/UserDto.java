@@ -4,11 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor
 public class UserDto {
-    private String name;
-    private String surname;
-    private String eMail;
+    private Long userId;
+    private String userName;
+    private String firstName;
+    private String lastName;
+    private String password;
+    private String emailAddress;
+    private String address;
+    private String phoneNumber;
+    private Cart cart;
 }

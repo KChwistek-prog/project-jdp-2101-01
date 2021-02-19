@@ -27,7 +27,7 @@ public class UserRepositoryTestSuite {
         //When
         userRepository.save(user);
 
-        Long id = user.getId();
+        Long id = user.getUserId();
         //Then
         assertTrue(userRepository.findById(id).isPresent());
 
@@ -42,7 +42,7 @@ public class UserRepositoryTestSuite {
 
         //When
         userRepository.save(user);
-        Long id = user.getId();
+        Long id = user.getUserId();
         userRepository.findById(id);
         String userName = user.getUserName();
 
@@ -62,7 +62,7 @@ public class UserRepositoryTestSuite {
 
         //When
         userRepository.save(user);
-        Long id = user.getId();
+        Long id = user.getUserId();
         userRepository.findByUserName("TestUserName").setEmailAddress("my@new.address");
 
         User updateUserEmail = userRepository.findByUserName("TestUserName");
@@ -81,9 +81,9 @@ public class UserRepositoryTestSuite {
 
         //When
         userRepository.save(userOne);
-        Long userOneId = userOne.getId();
+        Long userOneId = userOne.getUserId();
         userRepository.save(userTwo);
-        Long userTwoId = userTwo.getId();
+        Long userTwoId = userTwo.getUserId();
 
         //Then
         assertTrue(userRepository.findById(userTwoId).isPresent());

@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 
 @Service
 public class OrderMapper {
-
+    CartMapper cartMapper;
     public Order mapToOrder(final OrderDto orderDto){
         return new Order(
                 orderDto.getOrderId(),
-                orderDto.getCart(),
+                cartMapper.mapToCart(orderDto.getCartDto()),
                 orderDto.getOrderStatus(),
                 orderDto.getPaymentMethod(),
                 orderDto.getTotalValue(),
@@ -27,7 +27,7 @@ public class OrderMapper {
     public OrderDto mapToOrderDto(final Order order){
         return new OrderDto(
                 order.getOrderId(),
-                order.getCart(),
+                cartMapper.mapToCartDto(order.getCart()),
                 order.getOrderStatus(),
                 order.getPaymentMethod(),
                 order.getTotalValue(),

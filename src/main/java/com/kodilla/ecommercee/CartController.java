@@ -1,23 +1,23 @@
 package com.kodilla.ecommercee;
 
-import com.kodilla.ecommercee.domain.Cart;
-import com.kodilla.ecommercee.domain.CartDto;
-import com.kodilla.ecommercee.domain.OrderDto;
-import com.kodilla.ecommercee.domain.ProductDto;
+import com.kodilla.ecommercee.domain.*;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.util.Collections;
 
 @RestController
 @RequestMapping("/v1/Cart")
 @CrossOrigin("*")
 public class CartController {
-    private Cart cart;
+    private CartDto cartDto;
+    private OrderDto orderDto;
+    private UserDto user;
 
     @RequestMapping(method = RequestMethod.GET, value = "getNewCart")
     public CartDto createNewCart(@RequestParam Long userId) {
-        return new CartDto(1L,"first cart");
+        return new CartDto(1L,orderDto, user, new Timestamp(20200525123420L), new Timestamp(20200525123420L)  ,true, Collections.emptySet());
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getProducts")
@@ -38,6 +38,6 @@ public class CartController {
     @PostMapping(value = "createOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public OrderDto createOrder(@RequestBody OrderDto orderDto) {
 
-        return new OrderDto(1L, cart,"New order", "card", 2.0, new Timestamp(20200525123420L), new Timestamp(20200423142304L), true);
+        return new OrderDto(1L, cartDto, "done","card",2.0, new Timestamp(20200525123420L),new Timestamp(20200525123420L), true);
     }
 }

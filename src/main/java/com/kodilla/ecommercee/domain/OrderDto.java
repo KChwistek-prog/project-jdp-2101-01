@@ -7,7 +7,7 @@ import lombok.*;
 public class OrderDto {
     private Long orderId;
 
-    private Cart cart;
+    private CartDto cartDto;
 
     private String orderStatus;
 
