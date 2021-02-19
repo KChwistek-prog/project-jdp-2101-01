@@ -1,4 +1,4 @@
-package com.kodilla.ecommercee;
+package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.domain.GroupDto;
@@ -35,9 +35,9 @@ public class GroupController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getGroupWithId")
-    public GroupDto getGroupWithId(@RequestParam Long groupId) {
+    public GroupDto getGroupWithId(@RequestParam Long groupId) throws GroupNotFoundException{
         Optional<Group> searchedGroup = groupDatabase.getGroupById(groupId);
-        return groupMapper.mapToGroupDto(searchedGroup.orElseThrow(RuntimeException::new));
+        return groupMapper.mapToGroupDto(searchedGroup.orElseThrow(GroupNotFoundException::new));
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "updateGroup")
