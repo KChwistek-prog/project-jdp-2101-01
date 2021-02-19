@@ -15,13 +15,13 @@ import java.util.Set;
 @Table(name = "products")
 public class Product {
 
-    public Product(String name, String description, Double price, String unit, Group groups, Set<Product> products) {
+    public Product(String name, String description, Double price, String unit, Group groups, Set<Cart> carts) {
         this.name=name;
         this.description=description;
         this.price=price;
         this.unit=unit;
         this.groups=groups;
-        this.products=products;
+        this.carts=carts;
     }
 
     @Id
@@ -47,5 +47,5 @@ public class Product {
     private Group groups;
 
     @ManyToMany
-    private Set<Product> products;
+    private Set<Cart> carts;
 }

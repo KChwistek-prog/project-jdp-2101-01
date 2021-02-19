@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee.group.dao;
 
+import com.kodilla.ecommercee.domain.Cart;
 import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.repository.GroupRepository;
@@ -98,11 +99,11 @@ public class GroupRepositoryTestSuite {
     public void GroupDaoDelete() {
 
         //Given
-        Set<Product> setOfProduct = new HashSet<>();
+        Set<Cart> setOfCarts = new HashSet<>();
         List<Product> listOfProducts = new LinkedList<Product>();
         Group group1 = new Group("FirstGroup","FirstDescription",listOfProducts);
         Group group2 = new Group("SecondGroup","SecondDescription",listOfProducts);
-        Product product = new Product("FirstProduct","FirstDescription",10.0,"FirstUnit",group2,setOfProduct);
+        Product product = new Product("FirstProduct","FirstDescription",10.0,"FirstUnit",group2,setOfCarts);
         listOfProducts.add(product);
 
         //When
