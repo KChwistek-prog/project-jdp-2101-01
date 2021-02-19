@@ -44,5 +44,5 @@ public class Cart {
 
     @ManyToMany
     @JoinTable
-    private Set<Cart> listOfProducts;
+    private Set<Product> listOfProducts;
 }
