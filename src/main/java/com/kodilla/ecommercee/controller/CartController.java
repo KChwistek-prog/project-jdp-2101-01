@@ -9,9 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
-import java.util.Collections;
-
 @RestController
 @RequestMapping("/v1/Cart")
 @CrossOrigin("*")
@@ -40,17 +37,15 @@ public class CartController {
         return cartMapper.mapToCartDto(cartDatabase.getCart(cartId));
     }
 
-     ///////Zastanawiam sie jak to poczynić... będzie pewnie potrzebny mapper do produktu?
-  /*  @RequestMapping(method = RequestMethod.POST, value = "addProducts")
-    public ProductDto addProduct(@RequestParam Long cartId) {
-        return new ProductDto(2L,"Added Product","Added description",60.60, "szt.", 6L);
+    @RequestMapping(method = RequestMethod.POST, value = "addProducts")
+    public CartDto addProduct(@RequestParam Long cartId, @RequestParam Long productId) {
+        return cartDatabase.addProduct(cartId, productId);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteProduct")
     public void deleteProductFromCart(@RequestParam Long cartId, @RequestParam Long productId) {
-        itemService.deleteByCartAndItem(cartDatabase.getCart(cartId), productDatabase.getProduct(productId));
+        cartDatabase.deleteProduct(cartId, productId);
     }
-    */
 
     @PostMapping(value = "createOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public OrderDto createOrder(@RequestBody OrderDto orderDto) {

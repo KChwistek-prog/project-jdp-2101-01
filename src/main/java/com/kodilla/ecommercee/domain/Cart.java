@@ -6,7 +6,6 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -45,4 +44,9 @@ public class Cart {
     @ManyToMany
     @JoinTable
     private Set<Product> listOfProducts;
+
+    public void addProduct(Product product) {
+        listOfProducts.add(product);
+        product.getCarts().add(this);
+    }
 }

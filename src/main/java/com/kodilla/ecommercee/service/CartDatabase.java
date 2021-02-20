@@ -1,17 +1,13 @@
 package com.kodilla.ecommercee.service;
 
 import com.kodilla.ecommercee.domain.Cart;
-import com.kodilla.ecommercee.domain.User;
+import com.kodilla.ecommercee.domain.CartDto;
+import com.kodilla.ecommercee.domain.Product;
+import com.kodilla.ecommercee.mapper.CartMapper;
 import com.kodilla.ecommercee.repository.CartRepository;
-import com.kodilla.ecommercee.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -20,16 +16,31 @@ public class CartDatabase {
     @Autowired
     private CartRepository cartRepository;
 
+    @Autowired
+    private final ProductDatabase productDatabase;
+
+    @Autowired
+    private final CartMapper cartMapper;
+
+
     public Cart saveCart(Cart cart) {
         return cartRepository.save(cart);
     }
 
     public Cart getCart(Long cartId) {
-        Cart cart =  cartRepository.findById(cartId).orElse(new Cart());
-        if (cart.getOrder() == null) {
-            return cart;
-        } else {
-            return new Cart();
-        }
+        return cartRepository.findById(cartId).orElse(new Cart());
+    }
+
+    public CartDto addProduct(Long cartId, Long productId) {
+        Cart cart = cartRepository.findById(cartId).orElse(new Cart());
+        cart.addProduct(productDatabase.getProduct(productId));
+        return cartMapper.mapToCartDto(cartRepository.save(cart));
+    }
+
+    public void deleteProduct(Long cartId, Long productId) {
+        Cart cart = cartRepository.findById(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found"));
+        Product productDelete = productDatabase.getProduct(productId);
+        cart.getListOfProducts().remove(productDelete);
+        cartMapper.mapToCartDto(cartRepository.save(cart));
     }
 }
