@@ -29,7 +29,7 @@ public class ProductDbService {
     }
 
     public void addProduct(){
-        repository.save(new Product(8L,"Product","Description",99.56, "szt.", new Group(4L, "Group", "Desc", new ArrayList<Product>()), new HashSet<Cart>()));
+        repository.save(new Product("Product","Description",99.56, "szt.", new Group("Group", "Desc", new ArrayList<Product>()), new HashSet<Cart>()));
     }
 
     public Product modifyProduct(final Product product){

@@ -21,8 +21,7 @@ public class UserMapper {
                 userDto.getPassword(),
                 userDto.getEmailAddress(),
                 userDto.getAddress(),
-                userDto.getPhoneNumber(),
-                cartDto.getListOfProducts()
+                userDto.getPhoneNumber()
         );
     }
 
@@ -35,8 +34,7 @@ public class UserMapper {
                 user.getPassword(),
                 user.getEmailAddress(),
                 user.getAddress(),
-                user.getPhoneNumber(),
-                cartDto.getUserDto().getCart()
+                user.getPhoneNumber()
         );
     }
 
