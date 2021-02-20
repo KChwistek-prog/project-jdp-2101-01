@@ -42,7 +42,6 @@ public class Cart {
     @Column(name = "IS_ORDERED")
     private Boolean isOrdered;
 
-    @ManyToMany
-    @JoinTable
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<Product> listOfProducts;
 }
