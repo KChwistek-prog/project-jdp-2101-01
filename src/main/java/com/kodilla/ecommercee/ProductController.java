@@ -1,5 +1,8 @@
 package com.kodilla.ecommercee;
 
+import com.kodilla.ecommercee.domain.Group;
+import com.kodilla.ecommercee.domain.GroupDto;
+import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.domain.ProductDto;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +21,7 @@ public class ProductController {
 
     @GetMapping("getProduct/{productId}")
     public ProductDto getProduct(@PathVariable Long productId) {
-        return new ProductDto(1L, "Name of product", "Description of product", 200, "szt.", 2L);
+        return new ProductDto(1L, "Name of product", "Description of product", 200, "szt.", new GroupDto(1L, "Name of group", "Desc of group"));
     }
 
     @PostMapping("addProduct")
@@ -28,7 +31,7 @@ public class ProductController {
 
     @PutMapping("updateProduct/{productId}")
     public ProductDto updateProduct(@RequestBody ProductDto productDto) {
-        return new ProductDto(1L, "New name of product", "New description of product", 678.9, "szt.", 5L);
+        return new ProductDto(1L, "New name of product", "New description of product", 678.9, "szt.", new GroupDto(1L, "Name of group", "Desc of group"));
     }
 
     @DeleteMapping("deleteProduct/{productId}")

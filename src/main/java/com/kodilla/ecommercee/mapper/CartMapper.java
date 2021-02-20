@@ -19,7 +19,7 @@ public class CartMapper {
                 cartDto.getDateOfReservation(),
                 cartDto.getTermOfEndReservation(),
                 cartDto.getIsOrdered(),
-                cartDto.getListOfProducts()
+                cartDto.getUserDto().getCart().getListOfProducts()
         );
     }
 

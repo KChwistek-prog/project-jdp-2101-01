@@ -46,6 +46,6 @@ public class Product {
     @JoinColumn(name = "GRUPY_ID")
     private Group groups;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<Cart> carts;
 }
