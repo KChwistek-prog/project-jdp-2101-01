@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+
 import java.util.Date;
 import java.util.Set;
 
@@ -19,5 +19,5 @@ public class CartDto {
     private Date dateOfReservation;
     private Date termOfEndReservation;
     private Boolean isOrdered;
-    private Set<Product> listOfProducts;
+    private Set<ProductDto> listOfProducts;
 }
