@@ -1,6 +1,5 @@
 package com.kodilla.ecommercee.mapper;
 
-import com.kodilla.ecommercee.domain.CartDto;
 import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.domain.UserDto;
 import org.springframework.stereotype.Service;
@@ -10,7 +9,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserMapper {
-    CartDto cartDto;
+
 
     public User mapToUser(final UserDto userDto){
         return new User(
@@ -21,8 +20,7 @@ public class UserMapper {
                 userDto.getPassword(),
                 userDto.getEmailAddress(),
                 userDto.getAddress(),
-                userDto.getPhoneNumber(),
-                cartDto.getListOfProducts()
+                userDto.getPhoneNumber()
         );
     }
 
@@ -35,8 +33,7 @@ public class UserMapper {
                 user.getPassword(),
                 user.getEmailAddress(),
                 user.getAddress(),
-                user.getPhoneNumber(),
-                cartDto.getUserDto().getCart()
+                user.getPhoneNumber()
         );
     }
 

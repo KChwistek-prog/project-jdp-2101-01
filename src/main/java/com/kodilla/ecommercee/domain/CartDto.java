@@ -19,5 +19,5 @@ public class CartDto {
     private Date dateOfReservation;
     private Date termOfEndReservation;
     private Boolean isOrdered;
-    private Set<Cart> listOfProducts;
+    private Set<Product> listOfProducts;
 }
