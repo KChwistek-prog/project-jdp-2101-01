@@ -22,7 +22,7 @@ public class UserMapper {
                 userDto.getEmailAddress(),
                 userDto.getAddress(),
                 userDto.getPhoneNumber(),
-                cartDto.getListOfProducts()
+                userDto.getCart().getUser().getCarts()
         );
     }
 

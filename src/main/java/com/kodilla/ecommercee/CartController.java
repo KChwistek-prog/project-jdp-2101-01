@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Collections;
 
 @RestController
@@ -22,17 +23,17 @@ public class CartController {
 
     @RequestMapping(method = RequestMethod.GET, value = "getProducts")
     public ProductDto getProducts(@RequestParam Long cartId) {
-        return new ProductDto(1L,"New Product","New description",20.20, "szt.", 5L);
+        return new ProductDto(1L,"New Product","New description",20.20, "szt.", new GroupDto(1L, "Name of group", "Desc of group"));
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "addProducts")
     public ProductDto addProduct(@RequestParam Long cartId) {
-        return new ProductDto(2L,"Added Product","Added description",60.60, "szt.", 6L);
+        return new ProductDto(2L,"Added Product","Added description",60.60, "szt.", new GroupDto(1L, "Name of group", "Desc of group"));
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteProduct")
     public ProductDto deleteProduct(@RequestParam Long cartId) {
-        return new ProductDto(3L,"Deleted product","Deleted description",100.100, "szt.", 10L);
+        return new ProductDto(3L,"Deleted product","Deleted description",100.100, "szt.", new GroupDto(1L, "Name of group", "Desc of group"));
     }
 
     @PostMapping(value = "createOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
