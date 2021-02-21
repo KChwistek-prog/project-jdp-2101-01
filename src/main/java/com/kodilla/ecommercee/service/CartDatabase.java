@@ -17,7 +17,7 @@ public class CartDatabase {
     private CartRepository cartRepository;
 
     @Autowired
-    private final ProductDatabase productDatabase;
+    private final ProductDbService productDatabase;
 
     @Autowired
     private final CartMapper cartMapper;
@@ -33,13 +33,13 @@ public class CartDatabase {
 
     public CartDto addProduct(Long cartId, Long productId) {
         Cart cart = cartRepository.findById(cartId).orElse(new Cart());
-        cart.addProduct(productDatabase.getProduct(productId));
+        cart.addProduct(productDatabase.showProduct(productId).get());;
         return cartMapper.mapToCartDto(cartRepository.save(cart));
     }
 
     public void deleteProduct(Long cartId, Long productId) {
         Cart cart = cartRepository.findById(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found"));
-        Product productDelete = productDatabase.getProduct(productId);
+        Product productDelete = productDatabase.showProduct(productId).get();
         cart.getListOfProducts().remove(productDelete);
         cartMapper.mapToCartDto(cartRepository.save(cart));
     }

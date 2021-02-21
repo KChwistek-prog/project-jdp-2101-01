@@ -37,7 +37,7 @@ public class ProductController {
 
     @PostMapping("addProduct")
     public void addProduct(@RequestBody ProductDto productDto) {
-        dbService.addProduct();
+        dbService.addProduct(mapper.mapToProduct(productDto));
     }
 
     @PutMapping("updateProduct/{productId}")

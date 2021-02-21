@@ -28,8 +28,8 @@ public class ProductDbService {
         return repository.findById(productId);
     }
 
-    public void addProduct(){
-        repository.save(new Product("Product","Description",99.56, "szt.", new Group("Group", "Desc", new ArrayList<Product>()), new HashSet<Cart>()));
+    public void addProduct(final Product product){
+
     }
 
     public Product modifyProduct(final Product product){
