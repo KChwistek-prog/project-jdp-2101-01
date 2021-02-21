@@ -46,6 +46,12 @@ public class User {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
+    @OneToMany(
+            targetEntity = Cart.class,
+            mappedBy = "user",
+            cascade = CascadeType.REMOVE,
+            fetch = FetchType.LAZY)
+    private Set<Cart> carts;
 
     public User(String userName, String password, String emailAddress) {
         this.userName = userName;
