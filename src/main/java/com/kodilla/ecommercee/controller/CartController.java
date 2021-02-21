@@ -27,7 +27,7 @@ public class CartController {
         this.orderMapper = orderMapper;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "getNewCart")
+    @RequestMapping(method = RequestMethod.POST, value = "getNewCart")
     public void saveCart(@RequestBody CartDto cartDto) {
         cartDatabase.saveCart(cartMapper.mapToCart(cartDto));
     }
