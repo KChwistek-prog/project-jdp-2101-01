@@ -1,10 +1,12 @@
 package com.kodilla.ecommercee.mapper;
 
+import com.kodilla.ecommercee.domain.Cart;
 import com.kodilla.ecommercee.domain.CartDto;
 import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.domain.UserDto;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,7 +24,7 @@ public class UserMapper {
                 userDto.getEmailAddress(),
                 userDto.getAddress(),
                 userDto.getPhoneNumber(),
-                userDto.getCart().getUser().getCarts()
+                new HashSet<Cart>()
         );
     }
 
@@ -35,8 +37,7 @@ public class UserMapper {
                 user.getPassword(),
                 user.getEmailAddress(),
                 user.getAddress(),
-                user.getPhoneNumber(),
-                cartDto.getUserDto().getCart()
+                user.getPhoneNumber()
         );
     }
 
