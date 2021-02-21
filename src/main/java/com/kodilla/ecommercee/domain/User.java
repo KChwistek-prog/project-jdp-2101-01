@@ -7,8 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -18,6 +16,16 @@ import java.util.Set;
 @Entity
 @Table(name = "USERS")
 public class User {
+
+    public User(String userName, String firstName, String lastName, String password, String emailAddress, String address, String phoneNumber) {
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.emailAddress = emailAddress;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
 
     @NotNull
     @Id
@@ -52,10 +60,4 @@ public class User {
             cascade = CascadeType.REMOVE,
             fetch = FetchType.LAZY)
     private Set<Cart> carts;
-
-    public User(String userName, String password, String emailAddress) {
-        this.userName = userName;
-        this.password = password;
-        this.emailAddress = emailAddress;
-    }
 }
