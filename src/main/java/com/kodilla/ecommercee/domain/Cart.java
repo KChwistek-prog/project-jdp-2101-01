@@ -50,4 +50,5 @@ public class Cart {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<Product> listOfProducts;
+
 }

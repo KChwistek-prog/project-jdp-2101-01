@@ -2,11 +2,12 @@ package com.kodilla.ecommercee.mapper;
 
 import com.kodilla.ecommercee.domain.Cart;
 import com.kodilla.ecommercee.domain.CartDto;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@Service
 public class CartMapper {
     OrderMapper orderMapper;
     UserMapper userMapper;
