@@ -17,5 +17,5 @@ public class UserDto {
     private String emailAddress;
     private String address;
     private String phoneNumber;
-    private Cart cart;
+
 }
