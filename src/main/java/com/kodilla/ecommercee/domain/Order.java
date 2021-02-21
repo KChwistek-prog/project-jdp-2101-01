@@ -13,6 +13,16 @@ import java.sql.Timestamp;
 @Table(name = "orders")
 public class Order {
 
+    public Order( String orderStatus, String paymentMethod, Double totalValue, Timestamp paymentDate,
+                  Timestamp realisationDate,  boolean isPaid) {
+        this.orderStatus = orderStatus;
+        this.paymentMethod = paymentMethod;
+        this.totalValue = totalValue;
+        this.paymentDate = paymentDate;
+        this.realisationDate = realisationDate;
+        this.isPaid = isPaid;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="order_id")

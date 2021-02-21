@@ -12,7 +12,7 @@ public class ProductDto {
     private String description;
     private double price;
     private String unit;
-    private Long groupId;
+    private GroupDto groupId;
 }
 
 

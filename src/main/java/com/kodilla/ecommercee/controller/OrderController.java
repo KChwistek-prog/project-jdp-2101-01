@@ -1,13 +1,14 @@
 package com.kodilla.ecommercee.controller;
 
-import com.kodilla.ecommercee.domain.Order;
-import com.kodilla.ecommercee.domain.OrderDto;
+import com.kodilla.ecommercee.domain.*;
 import com.kodilla.ecommercee.mapper.OrderMapper;
 import com.kodilla.ecommercee.service.OrderDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,9 +32,9 @@ public class OrderController {
     }
 
     @GetMapping("/showOrder/{orderId}")
-    public Order showOrder(@PathVariable("orderId") Long orderId) throws  OrderNotFoundException {
+    public OrderDto showOrder(@PathVariable("orderId") Long orderId) throws  OrderNotFoundException {
         Optional<Order> order = orderDatabase.getOrder(orderId);
-        return order.orElseThrow(OrderNotFoundException::new);
+        return orderMapper.mapToOrderDto(order.orElseThrow(OrderNotFoundException::new));
     }
 
     @PutMapping(value = "/updateOrder/{orderId}", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -46,4 +47,5 @@ public class OrderController {
     public void removeOrder(@RequestParam("orderId") Long orderId) {
         orderDatabase.deleteOrder(orderId);
     }
+
 }
