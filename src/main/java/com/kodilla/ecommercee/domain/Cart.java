@@ -51,8 +51,4 @@ public class Cart {
     @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<Product> listOfProducts;
 
-    public void addProduct(Product product) {
-        listOfProducts.add(product);
-        product.getCarts().add(this);
-    }
 }

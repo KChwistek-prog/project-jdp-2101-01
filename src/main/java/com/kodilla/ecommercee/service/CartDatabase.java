@@ -33,7 +33,7 @@ public class CartDatabase {
 
     public CartDto addProduct(Long cartId, Long productId) {
         Cart cart = cartRepository.findById(cartId).orElse(new Cart());
-        cart.addProduct(productDatabase.showProduct(productId).get());;
+        cart.getListOfProducts().add(productDatabase.showProduct(productId).get());
         return cartMapper.mapToCartDto(cartRepository.save(cart));
     }
 
