@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
@@ -38,6 +37,9 @@ public class OrderTestSuite {
 
         //then
         assertTrue(orderRepository.findById(orderSave.getOrderId()).isPresent());
+
+        //cleanUp
+        orderRepository.deleteById(orderSave.getOrderId());
     }
 
     @Test
@@ -52,6 +54,10 @@ public class OrderTestSuite {
 
         //then
         assertEquals("testStatus", orderStatus);
+
+        //cleanUp
+        orderRepository.deleteById(orderRead.getOrderId());
+
     }
 
     @Test
@@ -66,6 +72,10 @@ public class OrderTestSuite {
 
         //then
         assertEquals("updatedStatus", status);
+
+        //cleanUp
+        orderRepository.deleteById(orderUpdate.getOrderId());
+
     }
 
     @Test
