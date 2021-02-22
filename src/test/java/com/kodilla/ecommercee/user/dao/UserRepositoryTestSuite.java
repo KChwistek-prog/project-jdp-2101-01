@@ -107,38 +107,27 @@ public class UserRepositoryTestSuite {
     @Test
     public void UserDaoDelete() {
         //Given
-        User user = new User(
-                "TestUserName",
-                "Jan",
-                "Kowalski",
-                "TestPassword",
-                "Test@email.com",
-                "TestAddress",
-                "123456789");
+        Set<Cart> setCart = new HashSet<>();
         Order order = new Order();
         Date dateOfReservation = new Date(12345678900L);
         Date endOfReservation = new Date(12345900000L);
         Set<Product> listOfProducts = new HashSet<>();
-        Cart cartForUserOne = new Cart(
-                order,
-                user,
-                dateOfReservation,
-                endOfReservation,
-                false,
-                listOfProducts
-        );
 
         //When
+        User user = new User("TestUserName","Jan","Kowalski","TestPassword","Test@email.com", "TestAddress","123456789");
         userRepository.save(user);
-        cartRepository.save(cartForUserOne);
         Long userId = user.getUserId();
-        Long cartId = cartForUserOne.getCartId();
+
+        Cart cart = new Cart(order, user, dateOfReservation, endOfReservation,false, listOfProducts);
+        cartRepository.save(cart);
+        Long cartId = cart.getCartId();
+        setCart.add(cart);
+        user.setCarts(setCart);
 
         //Then
         assertTrue(userRepository.findById(userId).isPresent());
         userRepository.deleteById(userId);
         assertFalse(userRepository.findById(userId).isPresent());
-
-        assertTrue(cartRepository.findById(cartId).isPresent());
+        assertFalse(cartRepository.findById(cartId).isPresent());
     }
 }
